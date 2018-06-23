@@ -66,7 +66,7 @@ var debug = require('debug')('botkit:main');
 var bot_options = {
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
-    // debug: true,
+    debug: true,
     scopes: ['bot'],
     studio_token: process.env.studio_token,
     studio_command_uri: process.env.studio_command_uri
@@ -119,6 +119,8 @@ if (!process.env.clientId || !process.env.clientSecret) {
   // Set up a simple storage backend for keeping a record of customers
   // who sign up for the app via the oauth
   require(__dirname + '/components/user_registration.js')(controller);
+
+  require(__dirname + '/skills/sample_hears.js')(controller);
 
   // Send an onboarding message when a new team joins
   require(__dirname + '/components/onboarding.js')(controller);
